@@ -1,0 +1,1372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eman Ahmed | AI Specialist & Creator</title>
+    
+    <!-- Bootstrap 5 CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-dark: #121212;
+            --bg-card: #1a1a2e;
+            --bg-card-hover: #16213e;
+            --accent-primary: #8b5cf6;
+            --accent-secondary: #06b6d4;
+            --accent-glow: rgba(139, 92, 246, 0.4);
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0b0;
+            --text-muted: #6b7280;
+            --border-color: rgba(255, 255, 255, 0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        /* ===== NAVBAR ===== */
+        .navbar {
+            background: rgba(18, 18, 18, 0.85) !important;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+            padding: 1rem 0;
+        }
+
+        .navbar.scrolled {
+            background: rgba(18, 18, 18, 0.95) !important;
+            box-shadow: 0 4px 30px rgba(139, 92, 246, 0.1);
+            padding: 0.7rem 0;
+        }
+
+        .navbar-brand {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 1.6rem;
+            color: var(--text-primary) !important;
+            letter-spacing: -0.5px;
+        }
+
+        .navbar-brand span {
+            color: var(--accent-primary);
+            text-shadow: 0 0 20px var(--accent-glow);
+        }
+
+        .nav-link {
+            color: var(--text-secondary) !important;
+            font-weight: 500;
+            font-size: 0.95rem;
+            margin-left: 1.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--accent-primary) !important;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+            transition: width 0.3s ease;
+            border-radius: 2px;
+        }
+
+        .nav-link:hover::after, .nav-link.active::after {
+            width: 100%;
+        }
+
+        .navbar-toggler {
+            border-color: var(--border-color);
+        }
+
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.8%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            padding-top: 80px;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(ellipse at 20% 50%, rgba(139, 92, 246, 0.12) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 20%, rgba(6, 182, 212, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 80%, rgba(139, 92, 246, 0.06) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 0.5rem 1.2rem;
+            background: rgba(139, 92, 246, 0.15);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            border-radius: 50px;
+            color: var(--accent-primary);
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            letter-spacing: -2px;
+        }
+
+        .hero-title .gradient-text {
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            max-width: 600px;
+            margin-bottom: 2.5rem;
+        }
+
+        .btn-glow {
+            padding: 0.85rem 2.2rem;
+            font-weight: 600;
+            font-size: 0.95rem;
+            border-radius: 50px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-glow-primary {
+            background: linear-gradient(135deg, var(--accent-primary), #7c3aed);
+            color: white;
+            box-shadow: 0 4px 25px rgba(139, 92, 246, 0.4);
+        }
+
+        .btn-glow-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 35px rgba(139, 92, 246, 0.6);
+            color: white;
+        }
+
+        .btn-glow-outline {
+            background: transparent;
+            color: var(--text-primary);
+            border: 2px solid rgba(139, 92, 246, 0.4);
+            margin-left: 1rem;
+        }
+
+        .btn-glow-outline:hover {
+            border-color: var(--accent-primary);
+            color: var(--accent-primary);
+            transform: translateY(-3px);
+            box-shadow: 0 4px 20px rgba(139, 92, 246, 0.2);
+        }
+
+        .hero-image-wrapper {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-image {
+            width: 100%;
+            max-width: 500px;
+            height: auto;
+            border-radius: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-image-bg {
+            position: absolute;
+            width: 100%;
+            max-width: 500px;
+            height: 100%;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            border-radius: 20px;
+            transform: rotate(6deg) scale(1.02);
+            opacity: 0.3;
+            z-index: 1;
+        }
+
+        .floating-elements {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .floating-dot {
+            position: absolute;
+            border-radius: 50%;
+            background: var(--accent-primary);
+            opacity: 0.2;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-dot:nth-child(1) { width: 12px; height: 12px; top: 20%; left: 10%; animation-delay: 0s; }
+        .floating-dot:nth-child(2) { width: 8px; height: 8px; top: 60%; left: 80%; animation-delay: 1s; background: var(--accent-secondary); }
+        .floating-dot:nth-child(3) { width: 15px; height: 15px; top: 80%; left: 30%; animation-delay: 2s; }
+        .floating-dot:nth-child(4) { width: 6px; height: 6px; top: 30%; left: 90%; animation-delay: 3s; background: var(--accent-secondary); }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* ===== SECTION STYLES ===== */
+        section {
+            padding: 100px 0;
+            position: relative;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .section-subtitle {
+            color: var(--text-secondary);
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 3rem;
+            font-size: 1.05rem;
+        }
+
+        .section-label {
+            display: inline-block;
+            color: var(--accent-primary);
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+        }
+
+        /* ===== ABOUT SECTION ===== */
+        .about-section {
+            background: linear-gradient(180deg, var(--bg-dark) 0%, rgba(26, 26, 46, 0.3) 50%, var(--bg-dark) 100%);
+        }
+
+        .about-text {
+            color: var(--text-secondary);
+            line-height: 1.9;
+            font-size: 1.05rem;
+        }
+
+        .about-text p {
+            margin-bottom: 1.2rem;
+        }
+
+        .skill-item {
+            margin-bottom: 1.8rem;
+        }
+
+        .skill-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.6rem;
+        }
+
+        .skill-name {
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--text-primary);
+        }
+
+        .skill-percent {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--accent-primary);
+        }
+
+        .progress {
+            height: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+            border-radius: 10px;
+            transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        .progress-bar::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            width: 20px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3));
+            border-radius: 0 10px 10px 0;
+        }
+
+        .about-image-wrapper {
+            position: relative;
+        }
+
+        .about-image {
+            width: 100%;
+            border-radius: 16px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .about-image-bg {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            right: -20px;
+            bottom: -20px;
+            border: 2px solid var(--accent-primary);
+            border-radius: 16px;
+            opacity: 0.3;
+            z-index: 1;
+        }
+
+        /* ===== SERVICES SECTION ===== */
+        .services-section {
+            background: var(--bg-dark);
+        }
+
+        .service-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            height: 100%;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(139, 92, 246, 0.3);
+            box-shadow: 0 20px 50px rgba(139, 92, 246, 0.15);
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 18px;
+            background: rgba(139, 92, 246, 0.1);
+            border: 1px solid rgba(139, 92, 246, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 1.8rem;
+            color: var(--accent-primary);
+            transition: all 0.4s ease;
+        }
+
+        .service-card:hover .service-icon {
+            background: var(--accent-primary);
+            color: white;
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 8px 25px rgba(139, 92, 246, 0.4);
+        }
+
+        .service-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            color: var(--text-primary);
+        }
+
+        .service-desc {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* ===== PORTFOLIO SECTION ===== */
+        .portfolio-section {
+            background: linear-gradient(180deg, var(--bg-dark) 0%, rgba(22, 33, 62, 0.3) 50%, var(--bg-dark) 100%);
+        }
+
+        .portfolio-filter {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 0.6rem 1.5rem;
+            border-radius: 50px;
+            border: 1px solid var(--border-color);
+            background: transparent;
+            color: var(--text-secondary);
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--accent-primary);
+            border-color: var(--accent-primary);
+            color: white;
+            box-shadow: 0 4px 20px rgba(139, 92, 246, 0.3);
+        }
+
+        .portfolio-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            height: 100%;
+        }
+
+        .portfolio-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(139, 92, 246, 0.3);
+            box-shadow: 0 20px 50px rgba(139, 92, 246, 0.15);
+        }
+
+        .portfolio-img-wrapper {
+            position: relative;
+            overflow: hidden;
+            height: 220px;
+        }
+
+        .portfolio-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .portfolio-card:hover .portfolio-img {
+            transform: scale(1.1);
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(180deg, transparent 0%, rgba(18, 18, 18, 0.9) 100%);
+            display: flex;
+            align-items: flex-end;
+            padding: 1.5rem;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .portfolio-card:hover .portfolio-overlay {
+            opacity: 1;
+        }
+
+        .portfolio-tag {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            background: rgba(139, 92, 246, 0.2);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            border-radius: 50px;
+            font-size: 0.75rem;
+            color: var(--accent-primary);
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .portfolio-body {
+            padding: 1.5rem;
+        }
+
+        .portfolio-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .portfolio-desc {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .portfolio-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent-primary);
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .portfolio-btn:hover {
+            color: var(--accent-secondary);
+            gap: 0.8rem;
+        }
+
+        /* ===== CONTACT SECTION ===== */
+        .contact-section {
+            background: var(--bg-dark);
+        }
+
+        .contact-wrapper {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-wrapper::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .form-control, .form-select {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 0.9rem 1.2rem;
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus, .form-select:focus {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: var(--accent-primary);
+            box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+            color: var(--text-primary);
+        }
+
+        .form-control::placeholder {
+            color: var(--text-muted);
+        }
+
+        .form-label {
+            color: var(--text-secondary);
+            font-weight: 500;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        textarea.form-control {
+            min-height: 140px;
+            resize: vertical;
+        }
+
+        .contact-info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-info-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 14px;
+            background: rgba(139, 92, 246, 0.1);
+            border: 1px solid rgba(139, 92, 246, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-primary);
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .contact-info-text h5 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+            color: var(--text-primary);
+        }
+
+        .contact-info-text p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .social-link {
+            width: 45px;
+            height: 45px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: var(--accent-primary);
+            border-color: var(--accent-primary);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(139, 92, 246, 0.3);
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: rgba(10, 10, 10, 0.95);
+            border-top: 1px solid var(--border-color);
+            padding: 2.5rem 0;
+            text-align: center;
+        }
+
+        .footer-text {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .footer-text span {
+            color: var(--accent-primary);
+            font-weight: 600;
+        }
+
+        .footer-brand {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 1.3rem;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-brand span {
+            color: var(--accent-primary);
+        }
+
+        /* ===== ANIMATIONS ===== */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .delay-1 { transition-delay: 0.1s; }
+        .delay-2 { transition-delay: 0.2s; }
+        .delay-3 { transition-delay: 0.3s; }
+        .delay-4 { transition-delay: 0.4s; }
+        .delay-5 { transition-delay: 0.5s; }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 991px) {
+            .hero-section {
+                padding-top: 100px;
+                text-align: center;
+            }
+            
+            .hero-subtitle {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            
+            .hero-image-wrapper {
+                margin-top: 3rem;
+            }
+            
+            .btn-glow-outline {
+                margin-left: 0;
+                margin-top: 1rem;
+            }
+            
+            .about-image-wrapper {
+                margin-bottom: 3rem;
+            }
+            
+            section {
+                padding: 70px 0;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-title {
+                font-size: 2.2rem;
+            }
+            
+            .contact-wrapper {
+                padding: 2rem 1.5rem;
+            }
+            
+            .btn-glow {
+                width: 100%;
+                margin-left: 0 !important;
+                margin-top: 0.5rem;
+            }
+        }
+
+        /* Scrollbar Styling */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-dark);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent-primary);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #7c3aed;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== NAVBAR ===== -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Eman<span>Ahmed</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#portfolio">Portfolio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ===== HERO SECTION ===== -->
+    <section id="home" class="hero-section">
+        <div class="floating-elements">
+            <div class="floating-dot"></div>
+            <div class="floating-dot"></div>
+            <div class="floating-dot"></div>
+            <div class="floating-dot"></div>
+        </div>
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-7 hero-content">
+                    <div class="fade-in-up">
+                        <span class="hero-badge">
+                            <i class="bi bi-cpu me-2"></i>AI Specialist & Creator
+                        </span>
+                    </div>
+                    <h1 class="hero-title fade-in-up delay-1">
+                        Hi, I'm <span class="gradient-text">Eman Ahmed</span>
+                    </h1>
+                    <p class="hero-subtitle fade-in-up delay-2">
+                        Transforming Ideas into Reality with AI. I build high-converting Landing Pages, Websites, Logos, stunning Images, and cinematic Videos entirely powered by Artificial Intelligence.
+                    </p>
+                    <div class="fade-in-up delay-3">
+                        <a href="#portfolio" class="btn btn-glow btn-glow-primary">
+                            <i class="bi bi-grid-3x3-gap me-2"></i>View My Portfolio
+                        </a>
+                        <a href="#contact" class="btn btn-glow btn-glow-outline">
+                            <i class="bi bi-lightning-charge me-2"></i>Let's Collaborate
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-5 hero-image-wrapper fade-in-up delay-2">
+                    <div class="hero-image-bg"></div>
+                    <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&h=700&fit=crop&q=80" alt="AI Technology" class="hero-image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== ABOUT SECTION ===== -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 about-image-wrapper fade-in-up">
+                    <div class="about-image-bg"></div>
+                    <img src="https://images.unsplash.com/photo-1531746790731-6c087fecd65a?w=600&h=700&fit=crop&q=80" alt="About Eman Ahmed" class="about-image">
+                </div>
+                <div class="col-lg-6 ps-lg-5">
+                    <div class="fade-in-up">
+                        <span class="section-label">About Me</span>
+                        <h2 class="section-title text-start mb-4">Crafting the Future with <span class="gradient-text">AI Innovation</span></h2>
+                    </div>
+                    <div class="about-text fade-in-up delay-1">
+                        <p>
+                            I'm Eman Ahmed, a passionate AI Specialist and Digital Creator who leverages cutting-edge artificial intelligence tools to deliver fast, high-quality digital solutions. With a deep understanding of both technology and design, I bridge the gap between creative vision and AI-powered execution.
+                        </p>
+                        <p>
+                            My approach combines the precision of machine learning with the artistry of human creativity. Whether it's generating stunning brand identities, building responsive websites, or producing cinematic video content, I harness the power of AI to transform concepts into reality faster and more efficiently than traditional methods.
+                        </p>
+                    </div>
+                    
+                    <div class="mt-4 fade-in-up delay-2">
+                        <div class="skill-item">
+                            <div class="skill-header">
+                                <span class="skill-name"><i class="bi bi-code-slash me-2 text-primary"></i>AI Web Development</span>
+                                <span class="skill-percent">95%</span>
+                            </div>
+                            <div class="progress">
+                                <div class="progress-bar" style="width: 0%" data-width="95%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-header">
+                                <span class="skill-name"><i class="bi bi-image me-2 text-info"></i>AI Image Generation</span>
+                                <span class="skill-percent">92%</span>
+                            </div>
+                            <div class="progress">
+                                <div class="progress-bar" style="width: 0%" data-width="92%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-header">
+                                <span class="skill-name"><i class="bi bi-palette me-2 text-warning"></i>Logo & Branding</span>
+                                <span class="skill-percent">90%</span>
+                            </div>
+                            <div class="progress">
+                                <div class="progress-bar" style="width: 0%" data-width="90%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-header">
+                                <span class="skill-name"><i class="bi bi-camera-video me-2 text-danger"></i>AI Video Production</span>
+                                <span class="skill-percent">88%</span>
+                            </div>
+                            <div class="progress">
+                                <div class="progress-bar" style="width: 0%" data-width="88%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SERVICES SECTION ===== -->
+    <section id="services" class="services-section">
+        <div class="container">
+            <div class="text-center fade-in-up">
+                <span class="section-label">What I Do</span>
+                <h2 class="section-title">My <span class="gradient-text">AI-Powered</span> Services</h2>
+                <p class="section-subtitle">Leveraging the latest AI technologies to deliver exceptional digital solutions that elevate your brand and accelerate your growth.</p>
+            </div>
+            
+            <div class="row g-4 mt-2">
+                <div class="col-md-6 col-lg-4 fade-in-up delay-1">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="bi bi-layout-text-window-reverse"></i>
+                        </div>
+                        <h3 class="service-title">AI Landing Pages</h3>
+                        <p class="service-desc">High-converting, visually stunning landing pages generated and optimized with AI. Fast delivery, SEO-ready, and designed to maximize conversions.</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4 fade-in-up delay-2">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="bi bi-globe"></i>
+                        </div>
+                        <h3 class="service-title">Full AI Websites</h3>
+                        <p class="service-desc">Complete, responsive websites built from scratch using AI tools. From design to deployment, every element is crafted for performance and aesthetics.</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4 fade-in-up delay-3">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="bi bi-brush"></i>
+                        </div>
+                        <h3 class="service-title">AI Logo & Branding</h3>
+                        <p class="service-desc">Unique, memorable brand identities created with AI precision. Logos, color palettes, typography, and complete brand guidelines delivered rapidly.</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-6 offset-lg-0 fade-in-up delay-4">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="bi bi-image-alt"></i>
+                        </div>
+                        <h3 class="service-title">AI Images & Digital Art</h3>
+                        <p class="service-desc">Breathtaking digital artwork, illustrations, and photorealistic images generated with state-of-the-art AI models. Perfect for marketing, social media, and creative projects.</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-6 fade-in-up delay-5">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="bi bi-film"></i>
+                        </div>
+                        <h3 class="service-title">AI Video Creation</h3>
+                        <p class="service-desc">Cinematic video content, animations, and promotional videos powered by AI. From concept to final cut, create professional-grade videos in record time.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== PORTFOLIO SECTION ===== -->
+    <section id="portfolio" class="portfolio-section">
+        <div class="container">
+            <div class="text-center fade-in-up">
+                <span class="section-label">My Work</span>
+                <h2 class="section-title">Featured <span class="gradient-text">Projects</span></h2>
+                <p class="section-subtitle">A showcase of AI-powered creations that demonstrate the power of artificial intelligence in digital design and development.</p>
+            </div>
+            
+            <div class="portfolio-filter fade-in-up delay-1">
+                <button class="filter-btn active" data-filter="all">All Projects</button>
+                <button class="filter-btn" data-filter="web">Web Design</button>
+                <button class="filter-btn" data-filter="branding">Branding</button>
+                <button class="filter-btn" data-filter="video">Video</button>
+            </div>
+            
+            <div class="row g-4" id="portfolio-grid">
+                <div class="col-md-6 col-lg-4 portfolio-item" data-category="branding">
+                    <div class="portfolio-card fade-in-up delay-1">
+                        <div class="portfolio-img-wrapper">
+                            <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600&h=400&fit=crop&q=80" alt="AI Brand Identity" class="portfolio-img">
+                            <div class="portfolio-overlay">
+                                <span class="portfolio-tag">Branding</span>
+                            </div>
+                        </div>
+                        <div class="portfolio-body">
+                            <h4 class="portfolio-title">AI-Generated Brand Identity</h4>
+                            <p class="portfolio-desc">Complete brand identity package including logo, color scheme, and visual guidelines created entirely with AI tools.</p>
+                            <a href="#" class="portfolio-btn">View Project <i class="bi bi-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4 portfolio-item" data-category="web">
+                    <div class="portfolio-card fade-in-up delay-2">
+                        <div class="portfolio-img-wrapper">
+                            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop&q=80" alt="AI Landing Page" class="portfolio-img">
+                            <div class="portfolio-overlay">
+                                <span class="portfolio-tag">Web Design</span>
+                            </div>
+                        </div>
+                        <div class="portfolio-body">
+                            <h4 class="portfolio-title">SaaS Landing Page</h4>
+                            <p class="portfolio-desc">High-converting landing page for a SaaS startup, designed and developed using AI-powered tools with modern animations.</p>
+                            <a href="#" class="portfolio-btn">View Project <i class="bi bi-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4 portfolio-item" data-category="video">
+                    <div class="portfolio-card fade-in-up delay-3">
+                        <div class="portfolio-img-wrapper">
+                            <img src="https://images.unsplash.com/photo-1536240478700-b869070f9279?w=600&h=400&fit=crop&q=80" alt="AI Video Campaign" class="portfolio-img">
+                            <div class="portfolio-overlay">
+                                <span class="portfolio-tag">Video</span>
+                            </div>
+                        </div>
+                        <div class="portfolio-body">
+                            <h4 class="portfolio-title">Automated Video Campaign</h4>
+                            <p class="portfolio-desc">Series of promotional videos generated with AI for a marketing campaign, featuring custom animations and voiceovers.</p>
+                            <a href="#" class="portfolio-btn">View Project <i class="bi bi-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4 portfolio-item" data-category="web">
+                    <div class="portfolio-card fade-in-up delay-1">
+                        <div class="portfolio-img-wrapper">
+                            <img src="https://images.unsplash.com/photo-1559028012-481c04fa702d?w=600&h=400&fit=crop&q=80" alt="E-Commerce Website" class="portfolio-img">
+                            <div class="portfolio-overlay">
+                                <span class="portfolio-tag">Web Design</span>
+                            </div>
+                        </div>
+                        <div class="portfolio-body">
+                            <h4 class="portfolio-title">AI E-Commerce Platform</h4>
+                            <p class="portfolio-desc">Full-featured e-commerce website with AI-generated product descriptions, images, and personalized user experience.</p>
+                            <a href="#" class="portfolio-btn">View Project <i class="bi bi-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4 portfolio-item" data-category="branding">
+                    <div class="portfolio-card fade-in-up delay-2">
+                        <div class="portfolio-img-wrapper">
+                            <img src="https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=600&h=400&fit=crop&q=80" alt="Digital Art Collection" class="portfolio-img">
+                            <div class="portfolio-overlay">
+                                <span class="portfolio-tag">Branding</span>
+                            </div>
+                        </div>
+                        <div class="portfolio-body">
+                            <h4 class="portfolio-title">Digital Art Collection</h4>
+                            <p class="portfolio-desc">Curated collection of AI-generated digital artworks for a gallery exhibition, showcasing the intersection of art and technology.</p>
+                            <a href="#" class="portfolio-btn">View Project <i class="bi bi-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4 portfolio-item" data-category="video">
+                    <div class="portfolio-card fade-in-up delay-3">
+                        <div class="portfolio-img-wrapper">
+                            <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=600&h=400&fit=crop&q=80" alt="Cinematic Trailer" class="portfolio-img">
+                            <div class="portfolio-overlay">
+                                <span class="portfolio-tag">Video</span>
+                            </div>
+                        </div>
+                        <div class="portfolio-body">
+                            <h4 class="portfolio-title">Cinematic AI Trailer</h4>
+                            <p class="portfolio-desc">Movie-style trailer created using AI video generation tools, featuring dynamic transitions, effects, and synthesized audio.</p>
+                            <a href="#" class="portfolio-btn">View Project <i class="bi bi-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CONTACT SECTION ===== -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <div class="text-center fade-in-up">
+                <span class="section-label">Get In Touch</span>
+                <h2 class="section-title">Let's Create Something <span class="gradient-text">Amazing</span></h2>
+                <p class="section-subtitle">Have a project in mind? Let's discuss how AI can transform your ideas into reality.</p>
+            </div>
+            
+            <div class="row justify-content-center mt-5">
+                <div class="col-lg-10">
+                    <div class="contact-wrapper fade-in-up delay-1">
+                        <div class="row g-5">
+                            <div class="col-lg-5">
+                                <h3 class="mb-4" style="font-family: 'Space Grotesk', sans-serif; font-weight: 700;">Contact Information</h3>
+                                
+                                <div class="contact-info-item">
+                                    <div class="contact-info-icon">
+                                        <i class="bi bi-envelope"></i>
+                                    </div>
+                                    <div class="contact-info-text">
+                                        <h5>Email</h5>
+                                        <p>hello@emanahmed.ai</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="contact-info-item">
+                                    <div class="contact-info-icon">
+                                        <i class="bi bi-geo-alt"></i>
+                                    </div>
+                                    <div class="contact-info-text">
+                                        <h5>Location</h5>
+                                        <p>Available Worldwide</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="contact-info-item">
+                                    <div class="contact-info-icon">
+                                        <i class="bi bi-clock"></i>
+                                    </div>
+                                    <div class="contact-info-text">
+                                        <h5>Response Time</h5>
+                                        <p>Within 24 Hours</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="social-links">
+                                    <a href="#" class="social-link" title="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                                    <a href="#" class="social-link" title="GitHub"><i class="bi bi-github"></i></a>
+                                    <a href="#" class="social-link" title="Behance"><i class="bi bi-behance"></i></a>
+                                    <a href="#" class="social-link" title="Twitter"><i class="bi bi-twitter-x"></i></a>
+                                    <a href="#" class="social-link" title="Instagram"><i class="bi bi-instagram"></i></a>
+                                </div>
+                            </div>
+                            
+                            <div class="col-lg-7">
+                                <form id="contactForm">
+                                    <div class="row g-3">
+                                        <div class="col-md-6">
+                                            <label class="form-label">Your Name</label>
+                                            <input type="text" class="form-control" placeholder="John Doe" required>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Your Email</label>
+                                            <input type="email" class="form-control" placeholder="john@example.com" required>
+                                        </div>
+                                        <div class="col-12">
+                                            <label class="form-label">Project Type</label>
+                                            <select class="form-select" required>
+                                                <option value="" selected disabled>Select a service...</option>
+                                                <option value="landing">AI Landing Page</option>
+                                                <option value="website">Full AI Website</option>
+                                                <option value="branding">Logo & Branding</option>
+                                                <option value="images">AI Images & Digital Art</option>
+                                                <option value="video">AI Video Creation</option>
+                                                <option value="other">Other / Custom</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-12">
+                                            <label class="form-label">Your Message</label>
+                                            <textarea class="form-control" placeholder="Tell me about your project..." required></textarea>
+                                        </div>
+                                        <div class="col-12">
+                                            <button type="submit" class="btn btn-glow btn-glow-primary w-100">
+                                                <i class="bi bi-send me-2"></i>Send Message
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-brand">Eman<span>Ahmed</span></div>
+            <p class="footer-text">© 2026 Eman Ahmed. Powered by <span>AI</span>.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scroll for nav links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    // Close mobile menu
+                    const navbarCollapse = document.querySelector('.navbar-collapse');
+                    if (navbarCollapse.classList.contains('show')) {
+                        navbarCollapse.classList.remove('show');
+                    }
+                }
+            });
+        });
+
+        // Active nav link on scroll
+        const sections = document.querySelectorAll('section[id]');
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                if (window.scrollY >= sectionTop) {
+                    current = section.getAttribute('id');
+                }
+            });
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    
+                    // Animate progress bars when about section is visible
+                    const progressBars = entry.target.querySelectorAll('.progress-bar');
+                    progressBars.forEach(bar => {
+                        const width = bar.getAttribute('data-width');
+                        if (width) {
+                            setTimeout(() => {
+                                bar.style.width = width;
+                            }, 300);
+                        }
+                    });
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in-up').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Portfolio filter
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const portfolioItems = document.querySelectorAll('.portfolio-item');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                const filter = btn.getAttribute('data-filter');
+                
+                portfolioItems.forEach(item => {
+                    if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                        item.style.display = 'block';
+                        setTimeout(() => {
+                            item.style.opacity = '1';
+                            item.style.transform = 'translateY(0)';
+                        }, 50);
+                    } else {
+                        item.style.opacity = '0';
+                        item.style.transform = 'translateY(20px)';
+                        setTimeout(() => {
+                            item.style.display = 'none';
+                        }, 300);
+                    }
+                });
+            });
+        });
+
+        // Contact form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const btn = this.querySelector('button[type="submit"]');
+            const originalText = btn.innerHTML;
+            
+            btn.innerHTML = '<i class="bi bi-check-circle me-2"></i>Message Sent!';
+            btn.style.background = 'linear-gradient(135deg, #10b981, #059669)';
+            btn.style.boxShadow = '0 4px 25px rgba(16, 185, 129, 0.4)';
+            
+            setTimeout(() => {
+                btn.innerHTML = originalText;
+                btn.style.background = '';
+                btn.style.boxShadow = '';
+                this.reset();
+            }, 3000);
+        });
+
+        // Trigger initial animations for hero section
+        setTimeout(() => {
+            document.querySelectorAll('.hero-section .fade-in-up').forEach(el => {
+                el.classList.add('visible');
+            });
+        }, 300);
+    </script>
+</body>
+</html>
